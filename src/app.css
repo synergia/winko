@@ -1,0 +1,13 @@
+#container {
+  background: red;
+  padding-top: 100px;
+}
+
+#button1 {
+  width: 200px;
+  background-color: black;
+  margin: auto;
+  padding: 100px;
+  color: white;
+  text-align: center;
+}
