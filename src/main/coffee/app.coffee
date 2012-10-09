@@ -27,5 +27,13 @@ initWebSocket = (uri) ->
   socket.onclose = (e) ->
     console.log "WebSocket connection closed"
 
+initNavigation = () ->
+  # $("#nav a").hammer().on "tap", (e) ->
+    # console.log $(this) #.attr("href")
+    # console.log e
+    # $("#home").hide()
+    # $($(this).attr("href")).show()
+
 $ ->
   initWebSocket("ws://192.168.0.29:5679")
+  initNavigation()

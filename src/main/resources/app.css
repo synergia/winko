@@ -10,5 +10,32 @@ html, body {
     height: 100%;
 }
 
-.app { height: 100%; /*display: none;*/ }
+.app { height: 100%; display: none; }
 .full { height: 100%; }
+
+#home {
+  height: 100%;
+  background: #000 url(http://www.abangfadli.com/wp-content/uploads/2011/11/99.jpg) center center;
+  font-family: "Segoe UI", Helvetica, sans-serif;
+  color: #fff;
+  font-weight: 100;
+  padding: 100px;
+}
+
+
+#home a {
+  float: left;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  padding: 10px;
+  background: #f90;
+  color: #fff;
+
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+a#nav-map { background: #379FF4; }
+a#nav-color { background: #75D300; }
