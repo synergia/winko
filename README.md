@@ -1,29 +1,30 @@
-# Setup
+# Requirements
 
-## Mac OS X
-```bash
-λ cp -r bin/npTuioClient.plugin ~/Library/Internet\ Plug-Ins
-```
+- sbt
 
-## Windows
-- Download http://cloud.github.com/downloads/fajran/npTuioClient/npTuioClient-0.2-win.zip
-- Copy to `C:\Users\<user>\AppData\Local\Google\Chrome\Application\Plugins`
-
-# Compile
+# Development
 
 ```bash
-λ coffee -cw src/app.coffee
-```
-
-# Run
-
-```bash
-λ open src/index.html
+$ sbt
+> ~re-start
 ```
 
 
 # Refs
 
-- https://github.com/fajran/npTuioClient
-- https://github.com/fajran/tuiojs
 - http://reactivision.sourceforge.net/#files
+- https://github.com/EightMedia/hammer.js
+- https://github.com/borismus/MagicTouch
+
+
+# Modifications
+
+1. hammer.js:104
+
+```js
+  var _has_touch = true
+```
+
+2. magictouch.js
+
+https://github.com/borismus/MagicTouch/pull/7/files
