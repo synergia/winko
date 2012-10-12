@@ -28,11 +28,24 @@ initWebSocket = (uri) ->
     console.log "WebSocket connection closed"
 
 initNavigation = () ->
-  # $("#nav a").hammer().on "tap", (e) ->
-    # console.log $(this) #.attr("href")
-    # console.log e
-    # $("#home").hide()
-    # $($(this).attr("href")).show()
+  $("#nav a").hammer().on "tap click", (e) ->
+    id = $(this).attr("href")
+    $("#home").hide()
+    $(id).show()
+    Apps[id]()
+
+
+Apps =
+  "#map": () ->
+    map = L.map('map-content').setView([51.505, -0.09], 13)
+    L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+      maxZoom: 18
+    }).addTo(map)
+
+  "#color": () ->
+
+
 
 $ ->
   initWebSocket("ws://192.168.0.29:5679")
