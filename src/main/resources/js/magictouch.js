@@ -38,6 +38,8 @@ var tuio = {
         evt[attr] = attrs[attr];
       }
     }
+
+
     // Dispatch the event
     if (touch.target) {
       touch.target.dispatchEvent(evt);

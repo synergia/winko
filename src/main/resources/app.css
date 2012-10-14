@@ -39,3 +39,5 @@ html, body {
 
 a#nav-map { background: #379FF4; }
 a#nav-color { background: #75D300; }
+
+#map-content { height: 100%; }
