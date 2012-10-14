@@ -13,7 +13,7 @@ initWebSocket = (uri) ->
     console.log "WebSocket connection open"
 
   socket.onmessage = (e) ->
-    console.log "WebSocket data: #{e.data}"
+    # console.log "WebSocket data: #{e.data}"
 
     [ev, sid, x, y] = e.data.split("|")
 
@@ -36,6 +36,23 @@ initNavigation = () ->
     $(id).show()
     CurrentApp = Apps[id]
     CurrentApp.start()
+
+  console.log "nav init"
+
+  control = {}
+  control.back = null
+
+  $("#control-back").hammer(
+    hold: true
+  ).on("hold", (e) ->
+    CurrentApp?.stop()
+    $(".app").hide()
+    $("#home").show()
+  ).on("touchstart", (e) ->
+    $("#control-back").addClass("active")
+  ).on("touchend", (e) ->
+    $("#control-back").removeClass("active")
+  )
 
 
 
@@ -81,7 +98,6 @@ class Color
     })
 
     @hammer.ondrag = (event) =>
-      console.log "dragging "
       for e in event.touches
         @points.unshift(x: e.x, y: e.y)
 
