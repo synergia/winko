@@ -35,6 +35,7 @@ initNavigation = () ->
     $("#home").hide()
     $(id).show()
     CurrentApp = Apps[id]
+
     CurrentApp.start()
 
   console.log "nav init"
@@ -55,6 +56,60 @@ initNavigation = () ->
   )
 
 
+class Photos
+  images: [
+    "/img/img1.jpg"
+    "/img/img2.jpg"
+    "/img/img1.jpg"
+    "/img/img2.jpg"
+    "/img/img1.jpg"
+  ]
+
+  start: () ->
+    box = $("#photos .full")
+    box.html('')
+    box.append('<div id="colorpicker"></div>')
+
+    xc = box.width() / 2
+    yc = box.height() / 2
+
+    rand = () -> (Math.random() * 100) - 50
+
+    drag = []
+    zIndex = @images.length
+
+    for img, i in @images
+      img = $("<img src='#{img}'/>")
+      img.css(
+        position: "absolute"
+        top: yc + rand()
+        left: xc + rand()
+        WebkitTransform: "rotate(#{rand()}deg)"
+        "max-width": "#{xc}px"
+        "margin-left": "#{-xc/2}px"
+        "margin-top": "#{-yc/2}px"
+        "z-index": i
+      )
+      img.hammer().on("tap", (ev) ->
+        $(this).css({"z-index": zIndex++})
+      ).on("drag", (ev) ->
+        targets = ev.originalEvent.touches || [ev.originalEvent]
+
+        for t,i in ev.touches
+          el = targets[i].target
+
+          # Use diff!
+
+          if el
+            el.style.left = "#{t.x}px"
+            el.style.top = "#{t.y}px"
+      )
+
+      $("#photos .full").append(img)
+
+
+  stop: () ->
+    $("#photos .full img").remove()
 
 class Map
   start: () ->
@@ -182,6 +237,7 @@ Apps =
   "#map": new Map()
   "#color": new Color()
   "#debug": new Debug()
+  "#photos": new Photos()
 
 
 
