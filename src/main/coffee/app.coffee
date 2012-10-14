@@ -1,7 +1,5 @@
 console.log "init"
 
-L.Browser.touch = true
-
 # hack for touch-enabled detection
 document.ontouchstart = null
 document.documentElement.ontouchstart = null
@@ -43,9 +41,10 @@ initNavigation = () ->
 
 class Map
   start: () ->
-    # $("#map-content").remove()
-    # $("#map .full").html("<div id='map-content'></div>")
+    $("#map-content").remove()
+    $("#map .full").html("<div id='map-content'></div>")
     window.map = map = L.map('map-content', {
+      zoomControl: false
     }).setView([51.505, -0.09], 13)
 
     L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
@@ -54,7 +53,7 @@ class Map
     }).addTo(map)
 
   stop: () ->
-    # $("#map-content").remove()
+    $("#map-content").remove()
 
 class Color
   start: () =>
